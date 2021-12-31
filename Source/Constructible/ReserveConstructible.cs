@@ -16,7 +16,7 @@ namespace Share_The_Load
 		//public bool CanReserve(Pawn claimant, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null, bool ignoreOtherReservations = false)
 		public static bool Prefix(Pawn claimant, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsFreeColonist && target.Thing is IConstructible c && !(c is Blueprint_Install))
+			if (claimant.IsUs() && target.Thing is IConstructible c && !(c is Blueprint_Install))
 			{
 				Log.Message($"{claimant} can reserve? {c} needs {c.MaterialsNeeded().ToStringSafeEnumerable()}");
 
@@ -40,7 +40,7 @@ namespace Share_The_Load
 		//public bool Reserve(Pawn claimant, Job job, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null)
 		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsFreeColonist
+			if (claimant.IsUs()
 				&& target.Thing is IConstructible c && !(c is Blueprint_Install)
 				&& job.def == JobDefOf.HaulToContainer
 				&& c.MaterialsNeeded().Count > 0)
@@ -73,7 +73,7 @@ namespace Share_The_Load
 		//public void Release(LocalTargetInfo target, Pawn claimant, Job job)
 		public static void Prefix(LocalTargetInfo target, Pawn claimant, Job job)
 		{
-			if (claimant.IsFreeColonist
+			if (claimant.IsUs()
 				&& target.Thing is IConstructible c && !(c is Blueprint_Install)
 				&& job.def == JobDefOf.HaulToContainer)
 				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job && q.claimed == target.Thing);

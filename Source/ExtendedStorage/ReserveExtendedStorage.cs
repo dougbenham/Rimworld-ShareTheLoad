@@ -61,7 +61,7 @@ namespace Share_The_Load
 		//public bool CanReserve(Pawn claimant, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null, bool ignoreOtherReservations = false)
 		public static bool Prefix(Pawn claimant, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsFreeColonist && target.Cell != LocalTargetInfo.Invalid)
+			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid)
 			{
 				if(claimant.Map.thingGrid.ThingsAt(target.Cell)
 					.FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage)
@@ -90,10 +90,10 @@ namespace Share_The_Load
 		//public bool Reserve(Pawn claimant, Job job, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null)
 		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsFreeColonist && target.Cell != LocalTargetInfo.Invalid
-				&& claimant.Map.thingGrid.ThingsAt(target.Cell)
-					.FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage) is Thing storage
-				&& job.def == JobDefOf.HaulToCell)
+			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
+			                    && claimant.Map.thingGrid.ThingsAt(target.Cell)
+				                    .FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage) is Thing storage
+			                    && job.def == JobDefOf.HaulToCell)
 			{
 				int canDo = storage.ApparentMaxStorage() - storage.StoredThingTotal();
 				if (canDo > 0)
@@ -128,9 +128,9 @@ namespace Share_The_Load
 		//public void Release(LocalTargetInfo target, Pawn claimant, Job job)
 		public static void Prefix(LocalTargetInfo target, Pawn claimant, Job job)
 		{
-			if (claimant.IsFreeColonist && target.Cell != LocalTargetInfo.Invalid
-				&& claimant.Map.thingGrid.ThingsAt(target.Cell).FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage) is Thing thing
-				&& job.def == JobDefOf.HaulToCell)
+			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
+			                    && claimant.Map.thingGrid.ThingsAt(target.Cell).FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage) is Thing thing
+			                    && job.def == JobDefOf.HaulToCell)
 				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job && q.claimed == thing);
 		}
 	}

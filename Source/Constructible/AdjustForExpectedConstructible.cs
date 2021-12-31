@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
-using Verse;
 using RimWorld;
+using Verse;
 
-namespace Share_The_Load
+namespace Share_The_Load.Constructible
 {
 	[HarmonyPatch(typeof(WorkGiver_ConstructDeliverResources), "FindNearbyNeeders")]
 	public static class FindNearbyNeeders_Patch

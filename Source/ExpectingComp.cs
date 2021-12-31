@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Verse;
 using Verse.AI;
 using HarmonyLib;
@@ -15,8 +14,7 @@ namespace Share_The_Load
 		public Thing claimed;
 		public ThingDef resource;
 		public int count;
-
-		public DeliverQuota() { }
+		
 		public DeliverQuota(Pawn p, Job j, Thing t, ThingDef r, int c)
 		{
 			claimant = p;

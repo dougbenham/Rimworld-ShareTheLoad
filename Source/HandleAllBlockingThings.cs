@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using static System.Reflection.Emit.OpCodes;
 using HarmonyLib;
 using Verse;
 using Verse.AI;

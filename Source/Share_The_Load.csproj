@@ -52,7 +52,7 @@
     <Compile Include="Constructible\Reserve_Patch.cs" />
     <Compile Include="DebugLog.cs" />
     <Compile Include="DeepStorage\CanReserve_Patch.cs" />
-    <Compile Include="DeepStorage\DeepStoragePatches.cs" />
+    <Compile Include="DeepStorage\Patches.cs" />
     <Compile Include="DeepStorage\ReleaseClaimedBy_Patch.cs" />
     <Compile Include="DeepStorage\Release_Patch.cs" />
     <Compile Include="DeepStorage\Reserve_Patch.cs" />
@@ -61,11 +61,14 @@
     <Compile Include="ExtendedStorage\CanReserve_Patch.cs" />
     <Compile Include="ExtendedStorage\ReleaseClaimedBy_Patch.cs" />
     <Compile Include="ExtendedStorage\Release_Patch.cs" />
-    <Compile Include="ExtendedStorage\ReserveExtendedStorage.cs" />
+    <Compile Include="ExtendedStorage\Patches.cs" />
     <Compile Include="ExtendedStorage\Reserve_Patch.cs" />
     <Compile Include="HandleAllBlockingThings.cs" />
     <Compile Include="MakeWayForBlueprint.cs" />
     <Compile Include="PawnExtensions.cs" />
+    <Compile Include="ProjectRimFactory\CanReserve_Patch.cs" />
+    <Compile Include="ProjectRimFactory\Patches.cs" />
+    <Compile Include="ProjectRimFactory\Reserve_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Share_The_Load.cs" />
@@ -78,6 +81,7 @@
       <Version>2.1.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

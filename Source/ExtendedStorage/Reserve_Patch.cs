@@ -14,7 +14,7 @@ namespace Share_The_Load.ExtendedStorage
 		{
 			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
 			                    && claimant.Map.thingGrid.ThingsAt(target.Cell)
-				                    .FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage) is Thing storage
+				                    .FirstOrDefault(t => t.GetType() == Patches.typeBuilding_ExtendedStorage) is Thing storage
 			                    && job.def == JobDefOf.HaulToCell)
 			{
 				int canDo = storage.ApparentMaxStorage() - storage.StoredThingTotal();

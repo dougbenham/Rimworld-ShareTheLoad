@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Verse;
 
-namespace Share_The_Load.DeepStorage
+namespace Share_The_Load.ProjectRimFactory
 {
 	static class CanReserve_Patch
 	{
@@ -10,7 +10,7 @@ namespace Share_The_Load.DeepStorage
 		{
 			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid)
 			{
-				if (claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.GetDeepStorageComp() != null))
+				if (claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.IsPrfStorage()))
 				{
 					__result = true;
 					return false;

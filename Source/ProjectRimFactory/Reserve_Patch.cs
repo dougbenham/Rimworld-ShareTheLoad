@@ -3,7 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace Share_The_Load.DeepStorage
+namespace Share_The_Load.ProjectRimFactory
 {
 	static class Reserve_Patch
 	{
@@ -11,7 +11,7 @@ namespace Share_The_Load.DeepStorage
 		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
 		{
 			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
-			                    && claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.GetDeepStorageComp() != null)
+			                    && claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.IsPrfStorage())
 			                    && job.def == JobDefOf.HaulToCell)
 			{
 				__result = true;

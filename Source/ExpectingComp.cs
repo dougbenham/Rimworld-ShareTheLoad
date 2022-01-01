@@ -15,6 +15,7 @@ namespace Share_The_Load
 		public ThingDef resource;
 		public int count;
 		
+		public DeliverQuota() {}
 		public DeliverQuota(Pawn p, Job j, Thing t, ThingDef r, int c)
 		{
 			claimant = p;

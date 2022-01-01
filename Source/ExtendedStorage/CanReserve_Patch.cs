@@ -12,7 +12,7 @@ namespace Share_The_Load.ExtendedStorage
 			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid)
 			{
 				if(claimant.Map.thingGrid.ThingsAt(target.Cell)
-						.FirstOrDefault(t => t.GetType() == ExtendedStoragePatches.typeBuilding_ExtendedStorage)
+						.FirstOrDefault(t => t.GetType() == Patches.typeBuilding_ExtendedStorage)
 					is Thing storage)
 				{
 					Log.Message($"{claimant} can reserve? {target.Cell} is {storage}");

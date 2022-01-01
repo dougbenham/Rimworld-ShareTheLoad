@@ -7,13 +7,13 @@ using Verse.AI;
 namespace Share_The_Load.ExtendedStorage
 {
 	[StaticConstructorOnStartup]
-	public static class ExtendedStoragePatches
+	public static class Patches
 	{
 		public static Type typeBuilding_ExtendedStorage;
 
-		static ExtendedStoragePatches()
+		static Patches()
 		{
-			Log.Message($"Share The Load checking with Extended Storage!");
+			Verse.Log.Message("Share The Load: Checking for Extended Storage!");
 			typeBuilding_ExtendedStorage = AccessTools.TypeByName("ExtendedStorage.Building_ExtendedStorage");
 			if (typeBuilding_ExtendedStorage == null)
 				return;
@@ -27,7 +27,7 @@ namespace Share_The_Load.ExtendedStorage
 				return;
 			}
 
-			Log.Message($"Share The Load patching with Extended Storage!");
+			Verse.Log.Message("Share The Load: Patching for Extended Storage!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-ES.main");
 			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));

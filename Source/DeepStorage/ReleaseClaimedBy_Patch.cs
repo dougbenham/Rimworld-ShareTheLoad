@@ -9,8 +9,10 @@ namespace Share_The_Load.DeepStorage
 		//public void ReleaseClaimedBy(Pawn claimant, Job job)
 		public static void Prefix(Pawn claimant, Job job)
 		{
-			if (job.def == JobDefOf.HaulToCell)
-				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job);
+			/*Verse.Log.Message($"{claimant} releasing all jobs of type {job.ToStringSafe()}");*/
+
+			/*if (job.def == JobDefOf.HaulToCell)
+				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job);*/
 		}
 	}
 }

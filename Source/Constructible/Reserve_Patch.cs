@@ -11,8 +11,13 @@ namespace Share_The_Load.Constructible
 	static class Reserve_Patch
 	{
 		//public bool Reserve(Pawn claimant, Job job, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null)
-		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
+		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, int stackCount, ref bool __result)
 		{
+			if (target.HasThing)
+				Log.Message($"{claimant} reserved {stackCount} of {target.Thing.ToStringSafe()} ({target.Thing.stackCount}) @ {target.Cell} during {job.def.defName} ({job.count})");
+			else
+				Log.Message($"{claimant} reserved {stackCount} of {target.Cell} during {job.def.defName} ({job.count})");
+
 			if (claimant.IsUs()
 			    && target.Thing is IConstructible c && !(c is Blueprint_Install)
 			    && job.def == JobDefOf.HaulToContainer

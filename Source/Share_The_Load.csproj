@@ -38,13 +38,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constructible\AdjustForExpectedConstructible.cs" />
+    <Compile Include="Constructible\Blueprint_TryReplaceWithSolidThing_Patch.cs" />
     <Compile Include="Constructible\CanReserve_Patch.cs" />
     <Compile Include="Constructible\ReleaseClaimedBy_Patch.cs" />
     <Compile Include="Constructible\Release_Patch.cs" />
@@ -53,8 +50,11 @@
     <Compile Include="DebugLog.cs" />
     <Compile Include="DeepStorage\CanReserve_Patch.cs" />
     <Compile Include="DeepStorage\Patches.cs" />
+    <Compile Include="DeepStorage\ReleaseAllClaimedBy_Patch.cs" />
+    <Compile Include="DeepStorage\ReleaseAllForTarget_Patch.cs" />
     <Compile Include="DeepStorage\ReleaseClaimedBy_Patch.cs" />
     <Compile Include="DeepStorage\Release_Patch.cs" />
+    <Compile Include="DeepStorage\CanReserveStack_Patch.cs" />
     <Compile Include="DeepStorage\Reserve_Patch.cs" />
     <Compile Include="DeliverAsMuchAsPossible.cs" />
     <Compile Include="ExpectingComp.cs" />

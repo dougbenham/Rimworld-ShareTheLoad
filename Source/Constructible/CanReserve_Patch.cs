@@ -9,11 +9,16 @@ namespace Share_The_Load.Constructible
 	static class CanReserve_Patch
 	{
 		//public bool CanReserve(Pawn claimant, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null, bool ignoreOtherReservations = false)
-		public static bool Prefix(Pawn claimant, LocalTargetInfo target, ref bool __result)
+		public static bool Prefix(Pawn claimant, LocalTargetInfo target, int stackCount, ref bool __result)
 		{
+			if (target.HasThing)
+				Log.Message($"{claimant} can reserve {stackCount} of {target.Thing.ToStringSafe()} ({target.Thing.stackCount}) @ {target.Cell}?");
+			else
+				Log.Message($"{claimant} can reserve {stackCount} of {target.Cell}?");
+
 			if (claimant.IsUs() && target.Thing is IConstructible c && !(c is Blueprint_Install))
 			{
-				Log.Message($"{claimant} can reserve? {c} needs {c.MaterialsNeeded().ToStringSafeEnumerable()}");
+				Log.Message($"{c} needs {c.MaterialsNeeded().ToStringSafeEnumerable()}");
 
 				// Even though you'd like to check MaterialsNeeded_Patch.FilterForExpected(c.MaterialsNeeded(), c)
 				// We don't know if the job is deliver or finish, so can't decide at this point

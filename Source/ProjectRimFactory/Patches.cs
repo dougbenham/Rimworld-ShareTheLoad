@@ -22,7 +22,7 @@ namespace Share_The_Load.ProjectRimFactory
 			Verse.Log.Message("Share The Load: Patching for ProjectRimFactory!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-RF.main");
-			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));
 			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "Reserve"), new HarmonyMethod(typeof(Reserve_Patch), "Prefix"));
 			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "Release"), new HarmonyMethod(typeof(Release_Patch), "Prefix"));
 			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "ReleaseClaimedBy"), new HarmonyMethod(typeof(ReleaseClaimedBy_Patch), "Prefix"));

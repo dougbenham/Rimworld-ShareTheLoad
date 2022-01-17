@@ -37,10 +37,13 @@ namespace Share_The_Load.DeepStorage
 			Verse.Log.Message("Share The Load: Patching for DeepStorage!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-DS.main");
-			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));
-			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "Reserve"), new HarmonyMethod(typeof(Reserve_Patch), "Prefix"));
-			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "Release"), new HarmonyMethod(typeof(Release_Patch), "Prefix"));
-			//harmony.Patch(AccessTools.Method(typeof(ReservationManager), "ReleaseClaimedBy"), new HarmonyMethod(typeof(ReleaseClaimedBy_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.CanReserve)), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.Reserve)), new HarmonyMethod(typeof(Reserve_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.Release)), new HarmonyMethod(typeof(Release_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.ReleaseClaimedBy)), new HarmonyMethod(typeof(ReleaseClaimedBy_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.ReleaseAllClaimedBy)), new HarmonyMethod(typeof(ReleaseAllClaimedBy_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.ReleaseAllForTarget)), new HarmonyMethod(typeof(ReleaseAllForTarget_Patch), "Prefix"));
+			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.CanReserveStack)), new HarmonyMethod(typeof(CanReserveStack_Patch), "Prefix"));
 		}
 
 		public static object GetDeepStorageComp(this Thing building)

@@ -10,9 +10,11 @@ namespace Share_The_Load.ProjectRimFactory
 		//public bool Reserve(Pawn claimant, Job job, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null)
 		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
-			                    && claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.IsPrfStorage())
-			                    && job.def == JobDefOf.HaulToCell)
+			if (claimant.IsUs()
+			    && target.Cell != LocalTargetInfo.Invalid
+			    && !target.HasThing // only allow location to be reserved infinitely, not specific items
+			    && claimant.Map.thingGrid.ThingsAt(target.Cell).Any(t => t.IsPrfStorage())
+			    && job.def == JobDefOf.HaulToCell)
 			{
 				__result = true;
 				return false;

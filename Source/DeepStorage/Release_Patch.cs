@@ -10,10 +10,15 @@ namespace Share_The_Load.DeepStorage
 		//public void Release(LocalTargetInfo target, Pawn claimant, Job job)
 		public static void Prefix(LocalTargetInfo target, Pawn claimant, Job job)
 		{
-			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
+			/*if (target.HasThing)
+				Verse.Log.Message($"{claimant} released [{target.Label}] {target.Thing.ToStringSafe()} ({target.Thing.stackCount}) @ {target.Cell} during job {job.ToStringSafe()}");
+			else
+				Verse.Log.Message($"{claimant} released [{target.Label}] {target.Cell} during job {job.ToStringSafe()}");*/
+
+			/*if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
 			                    && claimant.Map.thingGrid.ThingsAt(target.Cell).FirstOrDefault(t => t.GetDeepStorageComp() != null) is Thing thing
 			                    && job.def == JobDefOf.HaulToCell)
-				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job && q.claimed == thing);
+				ExpectingComp.Remove(q => q.claimant == claimant && q.job == job && q.claimed == thing);*/
 		}
 	}
 }

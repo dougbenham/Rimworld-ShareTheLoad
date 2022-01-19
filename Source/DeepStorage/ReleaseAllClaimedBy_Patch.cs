@@ -7,7 +7,7 @@ namespace Share_The_Load.DeepStorage
 		//void ReleaseAllClaimedBy(Pawn claimant)
 		public static void Prefix(Pawn claimant)
 		{
-			Verse.Log.Message($"Releasing all reservations by {claimant.ToStringSafe()}");
+			Log.Message($"Releasing all reservations by {claimant.ToStringSafe()}");
 		}
 	}
 }

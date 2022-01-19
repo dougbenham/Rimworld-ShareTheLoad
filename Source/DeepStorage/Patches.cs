@@ -13,7 +13,7 @@ namespace Share_The_Load.DeepStorage
 
 		static Patches()
 		{
-			Verse.Log.Message("Share The Load: Checking for DeepStorage!");
+			Verse.Log.Message("[Share The Load] Checking for DeepStorage!");
 			var compDeepStorage = AccessTools.TypeByName("LWM.DeepStorage.CompDeepStorage");
 			if (compDeepStorage == null)
 				return;
@@ -21,7 +21,7 @@ namespace Share_The_Load.DeepStorage
 			var tryGetCompMethod = AccessTools.Method(AccessTools.TypeByName("Verse.ThingCompUtility"), "TryGetComp");
 			if (tryGetCompMethod == null)
 			{
-				Verse.Log.Error("ShareTheLoad: Couldn't find Verse.ThingCompUtility.TryGetComp(..)");
+				Verse.Log.Error("[Share The Load] Couldn't find Verse.ThingCompUtility.TryGetComp(..)");
 				return;
 			}
 
@@ -30,11 +30,11 @@ namespace Share_The_Load.DeepStorage
 			_capacityToStoreThingAtMethod = AccessTools.Method(compDeepStorage, "CapacityToStoreThingAt");
 			if (_capacityToStoreThingAtMethod == null)
 			{
-				Verse.Log.Error("ShareTheLoad: Couldn't find LWM.DeepStorage.CompDeepStorage.CapacityToStoreThingAt(..)");
+				Verse.Log.Error("[Share The Load] Couldn't find LWM.DeepStorage.CompDeepStorage.CapacityToStoreThingAt(..)");
 				return;
 			}
 
-			Verse.Log.Message("Share The Load: Patching for DeepStorage!");
+			Verse.Log.Message("[Share The Load] Patching for DeepStorage!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-DS.main");
 			harmony.Patch(AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.CanReserve)), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));

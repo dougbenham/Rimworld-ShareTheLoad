@@ -13,13 +13,13 @@ namespace Share_The_Load.ProjectRimFactory
 
 		static Patches()
 		{
-			Verse.Log.Message("Share The Load: Checking for ProjectRimFactory!");
-			if (_massStorageUnitBuildingType == null)
+			Verse.Log.Message("[Share The Load] Checking for ProjectRimFactory!");
+			if (_massStorageUnitBuildingType == null || _storageUnitIoBaseType == null)
+			{
 				return;
-			if (_storageUnitIoBaseType == null)
-				return;
+			}
 
-			Verse.Log.Message("Share The Load: Patching for ProjectRimFactory!");
+			Verse.Log.Message("[Share The Load] Patching for ProjectRimFactory!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-RF.main");
 			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));

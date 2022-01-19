@@ -7,7 +7,7 @@ namespace Share_The_Load.DeepStorage
 		//void ReleaseAllForTarget(Thing t)
 		public static void Prefix(Thing t)
 		{
-			Verse.Log.Message($"Releasing all reservations for {t.ToStringSafe()}");
+			Log.Message($"Releasing all reservations for {t.ToStringSafe()}");
 		}
 	}
 }

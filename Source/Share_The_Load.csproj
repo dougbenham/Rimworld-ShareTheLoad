@@ -40,9 +40,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constructible\AdjustForExpectedConstructible.cs" />
+    <Compile Include="Constructible\FindNearbyNeeders_Patch.cs" />
     <Compile Include="Constructible\Blueprint_TryReplaceWithSolidThing_Patch.cs" />
     <Compile Include="Constructible\CanReserve_Patch.cs" />
+    <Compile Include="Constructible\MaterialsNeeded_Patch.cs" />
+    <Compile Include="Constructible\ReleaseAllForTarget_Patch.cs" />
     <Compile Include="Constructible\ReleaseClaimedBy_Patch.cs" />
     <Compile Include="Constructible\Release_Patch.cs" />
     <Compile Include="Constructible\ReleaseAllClaimedBy_Patch.cs" />
@@ -88,7 +90,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (
+copy /Y "$(TargetPath)" "C:\Users\dougb\Desktop\RimWorld\Latest\Mods\1356838246\1.3\Assemblies\"
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>

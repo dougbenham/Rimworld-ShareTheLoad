@@ -13,7 +13,7 @@ namespace Share_The_Load.ExtendedStorage
 
 		static Patches()
 		{
-			Verse.Log.Message("Share The Load: Checking for Extended Storage!");
+			Verse.Log.Message("[Share The Load] Checking for Extended Storage!");
 			typeBuilding_ExtendedStorage = AccessTools.TypeByName("ExtendedStorage.Building_ExtendedStorage");
 			if (typeBuilding_ExtendedStorage == null)
 				return;
@@ -23,11 +23,11 @@ namespace Share_The_Load.ExtendedStorage
 
 			if (ApparentMaxStorageInfo == null || StoredThingTotalInfo == null)
 			{
-				Verse.Log.Warning("ShareTheLoad couldn't work with ExtendedStorage, whooops!");
+				Verse.Log.Warning("[Share The Load] Couldn't work with ExtendedStorage, whooops!");
 				return;
 			}
 
-			Verse.Log.Message("Share The Load: Patching for Extended Storage!");
+			Verse.Log.Message("[Share The Load] Patching for Extended Storage!");
 
 			Harmony harmony = new Harmony("Uuugggg.rimworld.Share_The_Load-ES.main");
 			harmony.Patch(AccessTools.Method(typeof(ReservationManager), "CanReserve"), new HarmonyMethod(typeof(CanReserve_Patch), "Prefix"));

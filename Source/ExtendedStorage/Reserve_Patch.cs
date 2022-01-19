@@ -12,10 +12,10 @@ namespace Share_The_Load.ExtendedStorage
 		//public bool Reserve(Pawn claimant, Job job, LocalTargetInfo target, int maxPawns = 1, int stackCount = -1, ReservationLayerDef layer = null)
 		public static bool Prefix(Pawn claimant, Job job, LocalTargetInfo target, ref bool __result)
 		{
-			if (claimant.IsUs() && target.Cell != LocalTargetInfo.Invalid
-			                    && claimant.Map.thingGrid.ThingsAt(target.Cell)
-				                    .FirstOrDefault(t => t.GetType() == Patches.typeBuilding_ExtendedStorage) is Thing storage
-			                    && job.def == JobDefOf.HaulToCell)
+			if (claimant.IsUs() &&
+			    target.Cell != LocalTargetInfo.Invalid &&
+			    claimant.Map.thingGrid.ThingsAt(target.Cell).FirstOrDefault(t => t.GetType() == Patches.typeBuilding_ExtendedStorage) is Thing storage &&
+			    job.def == JobDefOf.HaulToCell)
 			{
 				int canDo = storage.ApparentMaxStorage() - storage.StoredThingTotal();
 				if (canDo > 0)
@@ -28,9 +28,9 @@ namespace Share_The_Load.ExtendedStorage
 					Log.Message($"	out of: {canDo}");
 
 
-					int availableCount = deliverThing.stackCount;// + job.targetQueueA?.Sum(tar => tar.Thing.stackCount) ?? 0;
+					int availableCount = deliverThing.stackCount; // + job.targetQueueA?.Sum(tar => tar.Thing.stackCount) ?? 0;
 					//HaulToCell doesn't queue up its reservations, and so we don't know if there are more to get
-					count = Mathf.Min(new int[] { count, claimant.carryTracker.MaxStackSpaceEver(resource), availableCount, canDo });
+					count = Mathf.Min(new int[] {count, claimant.carryTracker.MaxStackSpaceEver(resource), availableCount, canDo});
 
 					Log.Message($"{storage} was expecting {resource}(" + ExpectingComp.ExpectedCount(storage, resource) + ")");
 					ExpectingComp.Add(claimant, job, storage, resource, count);
@@ -40,6 +40,7 @@ namespace Share_The_Load.ExtendedStorage
 					return false;
 				}
 			}
+
 			return true;
 		}
 	}

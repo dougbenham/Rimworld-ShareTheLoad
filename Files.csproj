@@ -11,7 +11,8 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ReleaseFiles Include="About\**;Defs\**;Patches\**;Languages\**;Sounds\**;Textures\**;LoadFolders.xml" Exclude="About\About-Debug.xml;About\About-Release.xml;About\About.xml" />
+    <ReleaseFiles Include="About\Preview.png" />
+    <ReleaseFiles Include="Languages\English\Keyed\AutoEnglish.xml" />
     <AboutFiles Include="About\About-Debug.xml;About\About-Release.xml" />
   </ItemGroup>
   <Target Name="Clean" />
